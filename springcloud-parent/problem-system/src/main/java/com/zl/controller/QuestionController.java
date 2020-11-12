@@ -22,6 +22,7 @@ public class QuestionController {
 
         String anoswer = questionService.selectQuestion(question);
 
+        System.out.println("111");
         System.out.println(anoswer);
        return anoswer;
     }
