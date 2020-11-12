@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -9,6 +10,7 @@
         <module name="common" />
         <module name="consumer" />
         <module name="eureka-server" />
+        <module name="Freeze" />
         <module name="problem-system" />
       </profile>
     </annotationProcessing>
@@ -16,6 +18,7 @@
       <module name="common" target="1.8" />
       <module name="consumer" target="1.8" />
       <module name="eureka-server" target="1.8" />
+      <module name="Freeze" target="1.8" />
       <module name="problem-system" target="1.8" />
       <module name="springcloud-parent" target="1.8" />
     </bytecodeTargetLevel>
