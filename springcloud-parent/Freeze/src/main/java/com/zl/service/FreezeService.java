@@ -12,4 +12,8 @@ public interface FreezeService {
     List<PersonAccount> findAllAccount();
 
     List<Bankcard> findAllBankCard(Integer id);
+
+    int freezeAccount(Integer id);
+
+    int freezeBankCard(Integer id);
 }

@@ -23,6 +23,17 @@ public class FreezeController {
       return accounts;
     }
 
+
+    //根据账户id冻结账户
+    @RequestMapping("/freezeAccount")
+    public int freezeAccount(Integer id) {
+        System.out.println(id);
+       int count =  freezeService.freezeAccount(id);
+       return count;
+
+    }
+
+
     //根据账户查询银行卡
     @RequestMapping("/findAllBankCard")
     public List<Bankcard> findAllBankCard(Integer id) {
@@ -31,5 +42,15 @@ public class FreezeController {
         System.out.println(bankcards);
         return bankcards;
     }
+
+    //冻结银行卡
+    @RequestMapping("/freezeBankCard")
+    public int freezeBankCard(Integer id) {
+        System.out.println(id);
+        int count  = freezeService.freezeBankCard(id);
+        System.out.println(count);
+        return count ;
+    }
+
 
 }

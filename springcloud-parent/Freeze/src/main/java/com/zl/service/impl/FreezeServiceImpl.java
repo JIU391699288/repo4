@@ -27,5 +27,18 @@ public class FreezeServiceImpl implements FreezeService {
         return bankcard;
     }
 
+    @Override
+    public int freezeAccount(Integer id) {
+
+      int count =   freezeDao.freezeAccount(id);
+        return count;
+    }
+
+    @Override
+    public int freezeBankCard(Integer id) {
+       int count = freezeDao.freezeBankCard(id);
+        return count;
+    }
+
 
 }

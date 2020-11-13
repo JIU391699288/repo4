@@ -3,8 +3,12 @@ server:
 spring:
   application:
     name: user-consumer
+  thymeleaf:
+    prefix: classpath:/static/template/
+    suffix: .html
 eureka:
   client:
     service-url:
       # EurekaServer的地址
       defaultZone: http://localhost:7001/eureka
+

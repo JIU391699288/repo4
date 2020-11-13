@@ -4,6 +4,7 @@ import com.zl.bean.Bankcard;
 import com.zl.bean.PersonAccount;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -15,4 +16,11 @@ public interface FreezeDao {
 
     @Select("select * from bankcard where accountid = #{id}")
     List<Bankcard> findAllBankCard(Integer id);
+
+
+    @Update("update personalaccount set state = 0 where id =#{id} ")
+    int freezeAccount(Integer id);
+
+    @Update("update bankcard set state = 0 where id =#{id} ")
+    int freezeBankCard(Integer id);
 }
