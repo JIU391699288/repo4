@@ -3,6 +3,7 @@ package com.zl.controller;
 
 import com.zl.bean.Question;
 import com.zl.service.QuestionService;
+import com.zl.utils.feign.QuestionFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/question")
-public class QuestionController {
+public class QuestionController implements QuestionFeign {
+
+
     @Autowired
     private QuestionService questionService;
 
@@ -22,10 +25,7 @@ public class QuestionController {
 
         String anoswer = questionService.selectQuestion(question);
 
-        System.out.println("111");
-        System.out.println(2222);
-
         System.out.println(anoswer);
-       return anoswer;
-    }
+        return anoswer;
+}
 }

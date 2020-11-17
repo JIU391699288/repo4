@@ -12,10 +12,10 @@
         <module>problem-system</module>
         <module>common</module>
         <module>consumer</module>
-        <module>Freeze</module>
+        <module>query-user</module>
+        <module>user-login</module>
     </modules>
     <packaging>pom</packaging>
-
     <!--父工程-->
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -36,11 +36,8 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
         </dependencies>
-
     </dependencyManagement>
-
     <build>
         <plugins>
             <plugin>

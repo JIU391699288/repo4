@@ -10,17 +10,21 @@
         <module name="common" />
         <module name="consumer" />
         <module name="eureka-server" />
-        <module name="Freeze" />
         <module name="problem-system" />
+        <module name="query-user" />
+        <module name="user-login" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="account-audit" target="1.8" />
       <module name="common" target="1.8" />
       <module name="consumer" target="1.8" />
       <module name="eureka-server" target="1.8" />
       <module name="Freeze" target="1.8" />
       <module name="problem-system" target="1.8" />
+      <module name="query-user" target="1.8" />
       <module name="springcloud-parent" target="1.8" />
+      <module name="user-login" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
