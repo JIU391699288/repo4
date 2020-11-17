@@ -7,7 +7,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableEurekaClient
-//@EnableFeignClients
 public class QurryUserApplication {
     public static void main(String[] args) {
         SpringApplication.run(QurryUserApplication.class,args);

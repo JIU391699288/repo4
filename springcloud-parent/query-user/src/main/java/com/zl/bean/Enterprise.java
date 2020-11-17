@@ -8,13 +8,12 @@ public class Enterprise implements Serializable {
     private  Integer ACCOUNTID;
     private  Integer USERID;
     private  String  PWD;
-    private  String  REGISTRANT;
+    private  String  NAME;
     private  String IDCARD;
     private  String   PHONE;
     private  Integer  TYPE;
     private  String  ADDRESS;
     private   Date    RTIME;
-
 
     @Override
     public String toString() {
@@ -22,7 +21,7 @@ public class Enterprise implements Serializable {
                 "ACCOUNTID=" + ACCOUNTID +
                 ", USERID=" + USERID +
                 ", PWD='" + PWD + '\'' +
-                ", REGISTRANT='" + REGISTRANT + '\'' +
+                ", NAME='" + NAME + '\'' +
                 ", IDCARD='" + IDCARD + '\'' +
                 ", PHONE='" + PHONE + '\'' +
                 ", TYPE=" + TYPE +
@@ -55,12 +54,12 @@ public class Enterprise implements Serializable {
         this.PWD = PWD;
     }
 
-    public String getREGISTRANT() {
-        return REGISTRANT;
+    public String getNAME() {
+        return NAME;
     }
 
-    public void setREGISTRANT(String REGISTRANT) {
-        this.REGISTRANT = REGISTRANT;
+    public void setNAME(String NAME) {
+        this.NAME = NAME;
     }
 
     public String getIDCARD() {
@@ -103,12 +102,12 @@ public class Enterprise implements Serializable {
         this.RTIME = RTIME;
     }
 
-    public Enterprise(Integer ACCOUNTID, Integer USERID, String PWD, String REGISTRANT, String IDCARD, String PHONE, Integer TYPE, String ADDRESS, Date RTIME) {
+    public Enterprise(Integer ACCOUNTID, Integer USERID, String PWD, String NAME, String IDCARD, String PHONE, Integer TYPE, String ADDRESS, Date RTIME) {
 
         this.ACCOUNTID = ACCOUNTID;
         this.USERID = USERID;
         this.PWD = PWD;
-        this.REGISTRANT = REGISTRANT;
+        this.NAME = NAME;
         this.IDCARD = IDCARD;
         this.PHONE = PHONE;
         this.TYPE = TYPE;
