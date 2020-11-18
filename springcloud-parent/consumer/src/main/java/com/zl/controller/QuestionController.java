@@ -18,7 +18,6 @@ public class QuestionController {
     @ResponseBody
     @RequestMapping("/select")
     public Object selectQuestion(String question) {
-
         String anoswer = questionFeign.selectQuestion(question);
         System.out.println(anoswer);
         Object json = JSON.toJSON(anoswer);

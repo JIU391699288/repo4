@@ -6,11 +6,12 @@
     <title>主体</title>
     <link rel="stylesheet" href="../layui/css/layui.css">
     <script src="../layui/layui.js"></script>
+
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">银行管理系统</div>
+        <div class="layui-logo">管理员系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="">控制台</a></li>
@@ -45,28 +46,21 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a href="javascript:;">汇款转账</a>
+                    <a href="javascript:;">查询账户</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">境内汇款</a>
-                            <dl class="layui-nav-child">
-                                <dd><a href="../SingleRemittance.html">单笔汇款</a></dd>
-                                <dd><a href="javascript:;">注册账号汇款</a></dd>
-                                <dd><a href="javascript:;">批量汇款</a></dd>
-                            </dl>
+                        <dd><a href="../account-list.html">个人账户</a>
                         </dd>
-                        <dd><a href="javascript:;">境外汇款</a>
-                            <dl class="layui-nav-child">
-                                <dd><a href="javascript:;">单笔汇款</a></dd>
-                            </dl>
+                        <dd><a href="../enter-list.html">企业账户</a>
+
                         </dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">我的账户</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">银行卡</a></dd>
-                        <dd><a href="javascript:;">账户申请</a></dd>
-                    </dl>
+                    <a href="javascript:;">账户审核</a>
+                    <!--<dl class="layui-nav-child">-->
+                        <!--<dd><a href="javascript:;">银行卡</a></dd>-->
+                        <!--<dd><a href="javascript:;">账户申请</a></dd>-->
+                    <!--</dl>-->
                 </li>
                 <li class="layui-nav-item"><a href="">功能小助手</a></li>
             </ul>
@@ -76,10 +70,8 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">内容主体区域</div>
-
-        <a href="../admin.html">管理员</a>
-
-        <button type="button">管理员</button>
+        <a href="../account-list.html">个人账户查询</a>
+        <a href="../enter-list.html">企业账户查询</a>
     </div>
 
     <div class="layui-footer">

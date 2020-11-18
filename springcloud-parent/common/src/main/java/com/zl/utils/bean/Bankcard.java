@@ -1,4 +1,4 @@
-package com.zl.bean;
+package com.zl.utils.bean;
 
 import lombok.Data;
 

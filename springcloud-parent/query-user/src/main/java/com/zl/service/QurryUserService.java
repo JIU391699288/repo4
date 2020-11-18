@@ -9,10 +9,7 @@ import java.util.List;
 public interface QurryUserService {
     List<Personalaccount> findAll();
 
-    PageInfo<Personalaccount> pageHelperList(Integer page, Integer size);
     List<Bankcard> findCard(Integer accountid);
-
-    PageInfo<Bankcard> pageHelperLists(Integer page, Integer size,Integer accountid);
     Integer frozenUser(Integer id);
     Integer thawUser(Integer id);
     Integer frozenCard(Integer id);

@@ -1,10 +1,9 @@
-package com.zl.bean;
+package com.zl.utils.bean;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 public class Personalaccount implements Serializable {
     private Integer pid;

@@ -21,34 +21,15 @@ public class QurryUserServiceImpl implements QurryUserService {
         return qurryUserDao.findAll();
     }
 
-    //实现类：
-    @Override
-    public PageInfo<Personalaccount> pageHelperList(Integer page, Integer size) {
-        //1）静态分页
-        PageHelper.startPage(page, size);
-        //2）集合查询
-        List<Personalaccount> personalaccounts = qurryUserDao.findAll();
-        //3）返回PageInfo:包含数据结果集+分页信息
-        return new PageInfo<Personalaccount>(personalaccounts);
-    }
-
     @Override
     public List<Bankcard> findCard(Integer accountid) {
         return qurryUserDao.findCard(accountid);
     }
 
-    //实现类：
-    @Override
-    public PageInfo<Bankcard> pageHelperLists(Integer page, Integer size,Integer accountid) {
-        //1）静态分页
-        PageHelper.startPage(page, size);
-        //2）集合查询
-        List<Bankcard> products = qurryUserDao.findCard(accountid);
-        //3）返回PageInfo:包含数据结果集+分页信息
-        return new PageInfo<Bankcard>(products);
-    }
     @Override
     public Integer frozenUser(Integer id) {
+        System.out.println(id);
+
         return qurryUserDao.frozenUser(id);
     }
 
