@@ -24,4 +24,6 @@ public interface EnterPriseService {
     Integer frozenCard(Integer id);
 
     Integer thawCard(Integer id);
+
+    List<Enterprise> selectCheckEnter();
 }

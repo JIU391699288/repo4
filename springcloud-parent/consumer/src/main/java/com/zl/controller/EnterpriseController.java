@@ -72,4 +72,18 @@ public class EnterpriseController {
         Integer count = qurryUserFeign.thawCard(id);
         return count;
     }
+
+
+    //查询待审核个人用户
+    //http://localhost:18082/feign/selectCheckEnter
+    @RequestMapping("/selectCheckEnter")
+    public R selectCheckEnter( ){
+        R result = null;
+        List<Enterprise> enterprises =  qurryUserFeign.selectCheckEnter();
+        Object json = JSON.toJSON(enterprises);
+        result = R.ok();
+        result.setCode(0);
+        result.data("item", json);
+        return result;
+    }
 }

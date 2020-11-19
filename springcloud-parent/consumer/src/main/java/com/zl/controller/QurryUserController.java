@@ -89,4 +89,18 @@ public class QurryUserController {
         Integer count = qurryUserFeign.thawCard(id);
         return count;
     }
+
+    //查询待审核个人用户
+    //http://localhost:18082/feign/selectCheckUser
+    @RequestMapping("/selectCheckUser")
+    public R selectCheckUser(){
+        R result = null;
+        List<Personalaccount> personalaccounts =  qurryUserFeign.selectCheckUser();
+        Object json = JSON.toJSON(personalaccounts);
+        result =R.ok();
+        result.setCode(0);
+        result.data("items", json);
+//        System.out.println(personalaccounts);
+        return result;
+    }
 }

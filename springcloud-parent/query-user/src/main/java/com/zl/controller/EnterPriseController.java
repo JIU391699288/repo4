@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zl.bean.Bankcard;
 import com.zl.bean.Enterprise;
+import com.zl.bean.Personalaccount;
 import com.zl.service.EnterPriseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -87,5 +88,13 @@ public class EnterPriseController {
         return count;
     }
 
+    //查询待审核个人用户
+    //http://localhost:8083/enterprise/selectCheckEnter
+    @RequestMapping("/selectCheckEnter")
+    public List<Enterprise> selectCheckEnter( ){
+        List<Enterprise> enterprises =  enterPriseService.selectCheckEnter();
+        System.out.println(enterprises);
+        return enterprises;
+    }
 
 }

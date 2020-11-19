@@ -19,7 +19,7 @@ public class Smscomponent {
     //发送验证码
     public  void sendMsg(String phone) {
         String code = String.valueOf((int)((Math.random()*9+1)*1000));
-    redisTemplate.opsForValue().set(""+phone, code,60, TimeUnit.SECONDS);
+    redisTemplate.opsForValue().set(""+phone, code,120, TimeUnit.SECONDS);
 
         System.out.println(code);
 
@@ -38,7 +38,7 @@ public class Smscomponent {
         bodys.put("channel", "0");
         bodys.put("mobile", "+86"+phone);
         bodys.put("templateID", "0000000");
-        bodys.put("templateParamSet", "['"+code+"', '1']");
+        bodys.put("templateParamSet", "['"+code+"', '2']");
 
 
 

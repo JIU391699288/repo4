@@ -58,4 +58,10 @@ public class QurryUserServiceImpl implements QurryUserService {
         return qurryUserDao.deleteUser(idCard);
     }
 
+    @Override
+    public List<Personalaccount> selectCheckUser() {
+        List<Personalaccount> personalaccounts = qurryUserDao.selectCheckUser();
+        return personalaccounts;
+    }
+
 }

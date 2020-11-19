@@ -73,4 +73,10 @@ public class EnterPriseServiceImpl implements EnterPriseService {
         int count = enterPriseDao.thawCard(id);
         return count;
     }
+
+    @Override
+    public List<Enterprise> selectCheckEnter() {
+        List<Enterprise> enterprises = enterPriseDao.selectCheckEnter();
+        return enterprises;
+    }
 }

@@ -24,4 +24,7 @@ public interface EnterPriseDao{
     int frozenCard(Integer id);
     @Update("update bankcard set BC_STATES=1 where BC_ID=#{id} and FK_AT_AID=1")
     int thawCard(Integer id);
+    @Select("select * from enterprise where state=0 and trunc(RTIME)\n" +
+            "  = trunc(Sysdate)")
+    List<Enterprise> selectCheckEnter();
 }

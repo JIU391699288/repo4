@@ -32,6 +32,9 @@ public interface QurryUserFeign {
     @RequestMapping("/user/thawcard")
     public Integer thawCard(@RequestParam(value = "id")Integer id);
 
+    @RequestMapping("/user/selectCheckUser")
+    public List<Personalaccount> selectCheckUser();
+
     @RequestMapping("/enterprise/findAllEnter")
     public List<Enterprise> findAllEnter();
 
@@ -49,5 +52,8 @@ public interface QurryUserFeign {
 
     @RequestMapping("/enterprise/thawcards")
     public Integer thawCards(@RequestParam(value = "id")Integer id);
+
+    @RequestMapping("/enterprise/selectCheckEnter")
+    public List<Enterprise> selectCheckEnter();
 
 }

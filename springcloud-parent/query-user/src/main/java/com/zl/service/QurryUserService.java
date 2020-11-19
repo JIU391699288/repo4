@@ -18,4 +18,7 @@ public interface QurryUserService {
     int updateUser(String idCard);
 
     int deleteUser(String idCard);
+
+    List<Personalaccount> selectCheckUser();
+
 }

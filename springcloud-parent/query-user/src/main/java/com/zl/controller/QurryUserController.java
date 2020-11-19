@@ -1,17 +1,13 @@
 package com.zl.controller;
 
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.zl.bean.Bankcard;
 import com.zl.bean.Personalaccount;
 import com.zl.service.QurryUserService;
 import com.zl.utils.ExceptionUtils.vo.R;
 import com.zl.utils.component.IdCardVerComponent;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -81,6 +77,17 @@ public class QurryUserController {
         Integer count = qurryUserService.thawCard(id);
         return count;
     }
+
+    //查询待审核个人用户
+    //http://localhost:8083/user/selectCheckUser
+    @RequestMapping("/selectCheckUser")
+    public List<Personalaccount> selectCheckUser( ){
+      List<Personalaccount> personalaccounts =  qurryUserService.selectCheckUser();
+
+        System.out.println(personalaccounts);
+      return personalaccounts;
+    }
+
 
     //开户审核
     @RequestMapping("/checkUser")
