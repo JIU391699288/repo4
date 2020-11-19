@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>企业账户审核</title>
-    <script src="layui/layui.js"></script>
-    <link rel="stylesheet" href="layui/css/layui.css">
+    <title>企业账户银行卡列表</title>
+    <script src="../layui/layui.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script src="../js/jquery-3.3.1.min.js"></script>
 
 </head>
 <body>
+<input type="hidden" th:value="${accountid}" id="accountid">
+
 <table class="layui-hide" id="test" lay-filter="test"></table>
 
 
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" href="">审核</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" href="">冻结</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" href="">解冻</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" href="">交易明细</a>
 </script>
 
 
@@ -20,28 +25,29 @@
 
 <script>
     layui.use('table', function () {
+        var val = $("#accountid").val();
         var table = layui.table;
 
         table.render({
             elem: '#test'
-            , url: '/feign/selectCheckEnter'
+            , url: '/feign/findEntercard?accountid='+val
             // , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
             , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
                 title: '提示'
                 , layEvent: 'LAYTABLE_TIPS'
                 , icon: 'layui-icon-tips'
             }]
-            , title: '账户信息表'
+            , title: '银行卡信息表'
             , parseData: function (res) {
                 return {
                     "code": 0,
-                    "data": res.data.item
+                    "data": res.data.items
                 }
             }
             , cols: [
                 [
                     {type: 'checkbox', fixed: 'left'}
-                    , {field: 'accountid', title: '编号', width: 80, fixed: 'left', unresize: true, sort: true}
+                    , {field: 'bc_id', title: '编号', width: 80, fixed: 'left', unresize: true, sort: true}
                     // , {field: 'address', title: '地址', width: 120, edit: 'text',templet: function (res) {
                     //         return '<em>' + res.address + '</em>'
                     //     }}
@@ -49,14 +55,17 @@
                     //     field: 'birthday', title: '邮箱', width: 150, edit: 'text', templet: function (res) {
                     //         return '<em>' + res.birthday + '</em>'
                     //     }
+
                     // }
-                    , {field: 'registrant', title: '注册人', width: 80, edit: 'text', sort: true}
-                    , {field: 'pwd', title: '账户密码', width: 100, edit: 'text', sort: true}
-                    , {field: 'idcard', title: '身份证号', width: 150, edit: 'text', sort: true}
-                    , {field: 'phome', title: '电话号码', width: 100, edit: 'text', sort: true}
-                    , {field: 'rtime', title: '注册时间', width: 150, edit: 'text', sort: true}
-                    , {field: 'address', title: '地址', width: 150, edit: 'text', sort: true}
-                    , {field: 'state', title: '状态', width: 80, edit: 'text', sort: true}
+                    , {field: 'bc_number', title: '银行卡账号', width: 180, edit: 'text', sort: true}
+                    , {field: 'bc_money', title: '余额', width: 100, edit: 'text', sort: true}
+                    , {field: 'bc_pwd', title: '密码', width: 80, edit: 'text', sort: true}
+                    , {field: 'bc_quota', title: '限额', width: 100, edit: 'text', sort: true}
+                    , {field: 'bc_states', title: '状态', width: 100, edit: 'text', sort: true}
+                    , {field: 'bc_date', title: '办卡日期', width: 150, edit: 'text', sort: true}
+                    , {field: 'bc_address', title: '开户网点', width: 150, edit: 'text', sort: true}
+                    ,{field: 'fk_bc_bank', title: '所属银行', width: 150, edit: 'text', sort: true}
+
                     // , {field: 'city', title: '城市', width: 100}
                     // , {field: 'sign', title: '签名'}
                     // , {field: 'experience', title: '积分', width: 80, sort: true}

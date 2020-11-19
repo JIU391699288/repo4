@@ -34,7 +34,6 @@ public interface QurryUserDao {
     @Delete("delete from personalaccount where idcard=#{idCard}")
     int deleteUser(String  idCard);
 
-    @Select("select * from personalaccount where state=0 and trunc(REGISTRATIONTIM)\n" +
-            "  = trunc(Sysdate)")
+    @Select("select * from personalaccount where trunc(REGISTRATIONTIM) = trunc(Sysdate) and state =0")
     List<Personalaccount> selectCheckUser();
 }

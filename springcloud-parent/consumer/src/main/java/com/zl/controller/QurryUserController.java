@@ -8,15 +8,13 @@ import com.zl.utils.bean.Bankcard;
 import com.zl.utils.bean.Personalaccount;
 import com.zl.utils.feign.QurryUserFeign;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/feign")
 public class QurryUserController {
 
@@ -34,6 +32,7 @@ public class QurryUserController {
 //    }
 
     @RequestMapping("/finduser")
+    @ResponseBody
     public R findAll() {
         R result = null;
         List<Personalaccount> personalaccounts = qurryUserFeign.findAll();
@@ -47,8 +46,9 @@ public class QurryUserController {
 
     //根据个人账户id查询所有银行卡
     //测试http://localhost:18082/feign/findcard?accountid=21
+    @ResponseBody
     @RequestMapping("/findcard")
-    public R findCard(Integer accountid){
+    public R findCard(Integer accountid) {
         R result = null;
         List<Bankcard> bankcards = qurryUserFeign.findCard(accountid);
         result = R.ok();
@@ -58,20 +58,31 @@ public class QurryUserController {
         return result;
     }
 
+    @RequestMapping("/tool")
+    public String tools(Integer accountid, Model model) {
+        System.out.println(9999);
+        System.out.println(accountid);
+        System.out.println(888);
+        model.addAttribute("accountid", accountid);
+        return "backcard-list";
+    }
+
     //冻结个人账户
     //http://localhost:18082/feign/frozenuser?id=21
     @RequestMapping("/frozenuser")
-    public Integer frozenUser(Integer id) {
-        Integer count = qurryUserFeign.frozenUser(id);
-        return count;
+    public String frozenUser(Integer pid) {
+        System.out.println(pid);
+        Integer count = qurryUserFeign.frozenUser(pid);
+        System.out.println(count);
+        return "account-list";
     }
 
     //解冻个人账户
     //http://localhost:18082/feign/thawuser?id=21
     @RequestMapping("/thawuser")
-    public Integer thawUser(Integer id) {
-        Integer count = qurryUserFeign.thawUser(id);
-        return count;
+    public String thawUser(Integer pid) {
+        Integer count = qurryUserFeign.thawUser(pid);
+        return "account-list";
     }
 
     //冻结个人账户的某个银行卡( 传入银行卡id)
@@ -93,11 +104,12 @@ public class QurryUserController {
     //查询待审核个人用户
     //http://localhost:18082/feign/selectCheckUser
     @RequestMapping("/selectCheckUser")
-    public R selectCheckUser(){
+    @ResponseBody
+    public R selectCheckUser() {
         R result = null;
-        List<Personalaccount> personalaccounts =  qurryUserFeign.selectCheckUser();
+        List<Personalaccount> personalaccounts = qurryUserFeign.selectCheckUser();
         Object json = JSON.toJSON(personalaccounts);
-        result =R.ok();
+        result = R.ok();
         result.setCode(0);
         result.data("items", json);
 //        System.out.println(personalaccounts);

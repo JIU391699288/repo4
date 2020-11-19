@@ -6,12 +6,15 @@ import com.zl.utils.bean.Bankcard;
 import com.zl.utils.bean.Enterprise;
 import com.zl.utils.feign.QurryUserFeign;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/feign")
 public class EnterpriseController {
     @Autowired
@@ -20,6 +23,7 @@ public class EnterpriseController {
     //查询所有企业账户
     //http://localhost:18082/feign/findAllEnter
     @RequestMapping("/findAllEnter")
+    @ResponseBody
     public R findAllEnter() {
         R result = null;
         List<Enterprise> enterpriseList = qurryUserFeign.findAllEnter();
@@ -31,14 +35,29 @@ public class EnterpriseController {
         return result;
     }
 
+
+    @RequestMapping("/toolEnterCard")
+    public String toolEnterCard(Integer accountid, Model model) {
+        System.out.println(accountid);
+        model.addAttribute("accountid", accountid);
+        return "enter-bankcard-list";
+    }
+
     //根据企业账户id查询所有银行卡
     //http://localhost:18082/feign/findEntercard?accountid=3
     @RequestMapping("/findEntercard")
-    public List<Bankcard> findEnterCard(Integer accountid) {
+    @ResponseBody
+    public R findEnterCard(Integer accountid) {
+        R result = null;
         List<Bankcard> bankcards = qurryUserFeign.findCard(accountid);
+        Object json = JSON.toJSON(bankcards);
+        result = R.ok();
+        result.setCode(0);
+        result.data("items", json);
         System.out.println(bankcards);
-        return bankcards;
+        return result;
     }
+
     //冻结企业账户
     //http://localhost:18082/feign/frozenCardEnter?accountid=3
     @RequestMapping("/frozenCardEnter")
@@ -77,9 +96,10 @@ public class EnterpriseController {
     //查询待审核个人用户
     //http://localhost:18082/feign/selectCheckEnter
     @RequestMapping("/selectCheckEnter")
-    public R selectCheckEnter( ){
+    @ResponseBody
+    public R selectCheckEnter() {
         R result = null;
-        List<Enterprise> enterprises =  qurryUserFeign.selectCheckEnter();
+        List<Enterprise> enterprises = qurryUserFeign.selectCheckEnter();
         Object json = JSON.toJSON(enterprises);
         result = R.ok();
         result.setCode(0);
