@@ -25,5 +25,9 @@ public interface EnterPriseService {
 
     Integer thawCard(Integer id);
 
+    int updateEnter(String idCard);
+
+    int deleteEnter(String idCard);
+
     List<Enterprise> selectCheckEnter();
 }

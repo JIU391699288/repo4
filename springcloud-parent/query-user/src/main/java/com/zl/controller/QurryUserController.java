@@ -84,30 +84,21 @@ public class QurryUserController {
     public List<Personalaccount> selectCheckUser( ){
       List<Personalaccount> personalaccounts =  qurryUserService.selectCheckUser();
 
-        System.out.println(personalaccounts);
       return personalaccounts;
     }
 
 
-    //开户审核
+    //个人开户审核
     @RequestMapping("/checkUser")
-    public R checkUser(String idCard,String name ) {
-        R result = null;
+    public String checkUser(String idCard,String name ) {
         String json = idCardVerComponent.idCardVer(idCard,name);
-        //String code =
-        System.out.println(json);
         if (json.contains("实名认证通过")){
-            int count = qurryUserService.updateUser(idCard);
-            result =  R.ok();
-            result.setMessage("开户成功");
-            return result;
+             qurryUserService.updateUser(idCard);
+            return "通过";
         }
         else {
-            int count = qurryUserService.deleteUser(idCard);
-            System.out.println(count);
-            result =  R.error();
-            result.setMessage("身份验证出错");
-            return result;
+            qurryUserService.deleteUser(idCard);
+            return "失败";
         }
 
     }

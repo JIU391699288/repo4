@@ -49,7 +49,7 @@ public class EnterpriseController {
     @ResponseBody
     public R findEnterCard(Integer accountid) {
         R result = null;
-        List<Bankcard> bankcards = qurryUserFeign.findCard(accountid);
+        List<Bankcard> bankcards = qurryUserFeign.findEnterCard(accountid);
         Object json = JSON.toJSON(bankcards);
         result = R.ok();
         result.setCode(0);
@@ -105,5 +105,22 @@ public class EnterpriseController {
         result.setCode(0);
         result.data("item", json);
         return result;
+    }
+    //企业开户审核
+    @RequestMapping("/checkEnter")
+    public String checkEnter(String idCard, String name ) {
+        System.out.println(idCard);
+        System.out.println(name);
+        String massage = qurryUserFeign.checkEnter(idCard, name);
+        System.out.println(massage);
+        if(massage.equals("通过")){
+            ;
+            return "Enterprise-audit-list";
+        }
+        else{
+
+            return "Enterprise-audit-list";
+        }
+//        return "redirect/feign/selectCheckUser";
     }
 }

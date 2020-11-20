@@ -75,6 +75,16 @@ public class EnterPriseServiceImpl implements EnterPriseService {
     }
 
     @Override
+    public int updateEnter(String idCard) {
+        return enterPriseDao.updateEnter(idCard);
+    }
+
+    @Override
+    public int deleteEnter(String idCard) {
+        return enterPriseDao.deleteEnter(idCard);
+    }
+
+    @Override
     public List<Enterprise> selectCheckEnter() {
         List<Enterprise> enterprises = enterPriseDao.selectCheckEnter();
         return enterprises;

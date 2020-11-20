@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>个人账户审核</title>
-    <script src="layui/layui.js"></script>
-    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="../layui/layui.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
 
 </head>
 <body>
@@ -12,7 +12,7 @@
 
 
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" href="">审核</a>
+    <a class="layui-btn layui-btn-xs" lay-event="checkUser">审核</a>
 
 </script>
 
@@ -39,7 +39,8 @@
                     "data":res.data.items
                 }
             }
-            , cols: [[
+            , cols: [
+                [
                 {type: 'checkbox', fixed: 'left'}
                 , {field: 'pid', title: '编号', width: 80, fixed: 'left', unresize: true, sort: true}
                 // , {field: 'address', title: '地址', width: 120, edit: 'text',templet: function (res) {
@@ -66,8 +67,20 @@
                 // , {field: 'logins', title: '登入次数', width: 100, sort: true}
                 // , {field: 'joinTime', title: '加入时间', width: 120}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 220}
-            ]]
+            ]
+            ]
             , page: true
+        });
+
+
+        //监听行工具事件
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            //console.log(obj)
+            if (obj.event === 'checkUser') {
+                //console.log(data)
+                this.href = "/feign/checkUser?idCard=" + data.idcard+"&name="+data.name;
+            }
         });
     });
 </script>

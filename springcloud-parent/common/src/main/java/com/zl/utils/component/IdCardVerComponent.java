@@ -19,7 +19,7 @@ public class IdCardVerComponent {
         String json = null;
         String host = "https://naidcard.market.alicloudapi.com"; // 【1】请求地址 支持http 和 https 及 WEBSOCKET
         String path = "/nidCard";// 【2】后缀
-        String appcode = "87ab2847ed94409c81a59455ccb9cf51"; // 【3】开通服务后 买家中心-查看AppCode
+        String appcode = "652477ecabbd44d3b33a1f897c320131"; // 【3】开通服务后 买家中心-查看AppCode
         //String idCard = "511126******064713";// 【4】请求参数，详见文档描述
         //String name = "杨过";// 【4】请求参数，详见文档描述
         try {

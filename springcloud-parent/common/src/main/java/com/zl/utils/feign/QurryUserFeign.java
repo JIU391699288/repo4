@@ -1,6 +1,5 @@
 package com.zl.utils.feign;
 
-
 import com.zl.utils.bean.Bankcard;
 import com.zl.utils.bean.Enterprise;
 import com.zl.utils.bean.Personalaccount;
@@ -34,6 +33,8 @@ public interface QurryUserFeign {
 
     @RequestMapping("/user/selectCheckUser")
     public List<Personalaccount> selectCheckUser();
+    @RequestMapping("/user/checkUser")
+    public String checkUser(@RequestParam(value = "idCard")String idCard, @RequestParam(value = "name")String name );
 
     @RequestMapping("/enterprise/findAllEnter")
     public List<Enterprise> findAllEnter();
@@ -55,5 +56,8 @@ public interface QurryUserFeign {
 
     @RequestMapping("/enterprise/selectCheckEnter")
     public List<Enterprise> selectCheckEnter();
+
+    @RequestMapping("/enterprise/checkEnter")
+    public String checkEnter(@RequestParam(value = "idCard")String idCard, @RequestParam(value = "name")String name );
 
 }

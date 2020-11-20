@@ -6,6 +6,7 @@ import com.zl.bean.Bankcard;
 import com.zl.bean.Enterprise;
 import com.zl.bean.Personalaccount;
 import com.zl.service.EnterPriseService;
+import com.zl.utils.component.IdCardVerComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,8 @@ public class EnterPriseController {
 
     @Autowired
     private EnterPriseService enterPriseService;
+    @Autowired
+    IdCardVerComponent idCardVerComponent;
 
     //查询所有企业账户
     //http://localhost:8083/enterprise/findAllEnter
@@ -88,13 +91,28 @@ public class EnterPriseController {
         return count;
     }
 
-    //查询待审核个人用户
+    //查询待审核企业用户
     //http://localhost:8083/enterprise/selectCheckEnter
     @RequestMapping("/selectCheckEnter")
     public List<Enterprise> selectCheckEnter( ){
         List<Enterprise> enterprises =  enterPriseService.selectCheckEnter();
         System.out.println(enterprises);
         return enterprises;
+    }
+
+    //企业开户审核
+    @RequestMapping("/checkEnter")
+    public String checkEnter(String idCard,String name ) {
+        String json = idCardVerComponent.idCardVer(idCard,name);
+        if (json.contains("实名认证通过")){
+            enterPriseService.updateEnter(idCard);
+            return "通过";
+        }
+        else {
+            enterPriseService.deleteEnter(idCard);
+            return "失败";
+        }
+
     }
 
 }
