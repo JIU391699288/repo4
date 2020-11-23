@@ -3,6 +3,7 @@ package com.zl.utils.feign;
 import com.zl.utils.bean.Bankcard;
 import com.zl.utils.bean.Enterprise;
 import com.zl.utils.bean.Personalaccount;
+import com.zl.utils.bean.Transactions;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,4 +61,10 @@ public interface QurryUserFeign {
     @RequestMapping("/enterprise/checkEnter")
     public String checkEnter(@RequestParam(value = "idCard")String idCard, @RequestParam(value = "name")String name );
 
+
+    @RequestMapping("/transaction/findCardTransaction")
+    public List<Transactions> findCardTransaction(@RequestParam(value = "bc_number")String bc_number);
+
+ @RequestMapping("/transaction/findCardTransactionByTime")
+ public List<Transactions> findCardTransactionByTime(@RequestParam(value = "number")Integer number);
 }

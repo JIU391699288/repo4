@@ -36,7 +36,7 @@ public class UserController {
         String phone = person.getUSER_TEL();
         R result = null;
         String Keycode = (String) redisTemplate.boundValueOps("" + phone).get();
-        if (code.equals(Keycode)){
+        if(code.equals(Keycode)){
             //删除redis里的键和值
             redisTemplate.delete("" + phone);
             userService.register(person);
